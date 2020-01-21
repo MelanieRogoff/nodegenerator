@@ -1,6 +1,6 @@
-const questions = ["What is your GitHub user name?", "What is your favorite color?"];
-
 const inquirer = require("inquirer");
+
+const questions = ["What is your GitHub user name?", "What is your favorite color?"];
 
 inquirer
   .prompt([
@@ -27,7 +27,6 @@ inquirer
         } else {
         console.log("You chose " + answers.color + ". I love that color, too!");
         }
-
       if (answers.name == '') {
         console.log("Oh no! You don't have a username? That won't do, let's try this again!");
       } else {
@@ -35,10 +34,3 @@ inquirer
   }
 });
   
-
-
-function init() {
-
-}
-
-init();

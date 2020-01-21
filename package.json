@@ -1,0 +1,23 @@
+{
+  "name": "nodegeneratorhw",
+  "version": "1.0.0",
+  "description": "GitHub Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelanieRogoff/nodegenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelanieRogoff/nodegenerator/issues"
+  },
+  "homepage": "https://github.com/MelanieRogoff/nodegenerator#readme",
+  "dependencies": {
+    "generate": "^0.14.0",
+    "inquirer": "^7.0.3"
+  }
+}
