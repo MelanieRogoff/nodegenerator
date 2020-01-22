@@ -25,8 +25,6 @@ const colors = {
   }
 };
 
-generateHTML();
-
   function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -172,6 +170,13 @@ generateHTML();
             zoom: .75; 
           } 
          }
-      </style>`
+      </style>
+      </head>
+      <body>    
+      </body>
+      </html>`
         }
       
+//Don't need to put parens because this is a function - we're exporting the function
+//When exporting f(x)'s, we don't need to put () b/c we're not trying to call the f(x) -- we just want to export the f(x) itself
+module.exports = generateHTML;
