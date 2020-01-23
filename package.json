@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/MelanieRogoff/nodegenerator#readme",
   "dependencies": {
+    "ajax-request": "^1.2.3",
     "generate": "^0.14.0",
     "html-pdf": "^2.2.0",
     "inquirer": "^7.0.3",
+    "jquery": "^3.4.1",
     "open": "^7.0.0"
   }
 }
