@@ -8,9 +8,9 @@ const fs = require('fs');
 
 const pdf = require('html-pdf');
 
-const geolocator = require('./geolocator');
+const geolocator = require('./assets/js/geolocator');
 
-const generateHTML = require("./generateHTML"); //Don't need to put .js
+const generateHTML = require("./assets/js/generateHTML"); //Don't need to put .js
 
 const questions = ["What is your GitHub user name?", "What is your favorite color?"];
 
