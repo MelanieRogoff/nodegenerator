@@ -8,6 +8,8 @@ const fs = require('fs');
 
 const pdf = require('html-pdf');
 
+const geolocator = require('./geolocator');
+
 const generateHTML = require("./generateHTML"); //Don't need to put .js
 
 const questions = ["What is your GitHub user name?", "What is your favorite color?"];
@@ -58,27 +60,12 @@ inquirer
         console.log(res.data.location);  //location (NEEDS GOOGLE MAPS API)
         console.log("GitHub Stars: " + "<p>" + res.data.starred_url + "</p>"); // # of GitHub stars
         console.log(res.data.url); //GitHub PROFILE?
+        console.log(geolocator); //Location via Google Maps BUT NOT WORKING RN
       })
       .catch(error => {
         console.log(error)
     });  
-      
-
-    // axios //CURRENTLY THROWING AN ERROR FOR GEOLOCATION -- LEAVING HERE TO FIX
-    //   .get('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCiR8dLY7WEQECSzJW0P60hdvg0ReoN7z8')
-    //   .then(function(res) {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //       let latitude = position.coords.latitude;
-    //       let longitude = position.coords.longitude;
-    //       console.log("You are located at: " + latitude + "," + longitude + ".");
-    //     })
-    //   .catch(error => {
-    //       console.log(error)
-    //   });    
-    //   });
-      
-
-
+    
 if (err) return console.log(err);
       console.log(res); // { filename: './user.pdf' }
       (async () => { //This opens the PDF in a new browser via open npm
