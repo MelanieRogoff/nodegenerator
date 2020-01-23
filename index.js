@@ -45,7 +45,7 @@ inquirer
     console.log("I love your username, " + answers.name + ", it's so original! Loading GitHub profile now.");
     pdf.create(generateHTML(answers)).toFile('./user.pdf', function(err, res) {
       
-   axios
+   axios //API CALL FOR GITHUB
       .get("https://api.github.com/users/" + answers.name)
       .then(function(res) {
         console.log("Hi!" + "<h2> My name is " + res.data.name); //username
@@ -58,9 +58,27 @@ inquirer
         console.log(res.data.location);  //location (NEEDS GOOGLE MAPS API)
         console.log("GitHub Stars: " + "<p>" + res.data.starred_url + "</p>"); // # of GitHub stars
         console.log(res.data.url); //GitHub PROFILE?
-      });
+      })
+      .catch(error => {
+        console.log(error)
+    });  
+      
 
-    
+    // axios //CURRENTLY THROWING AN ERROR FOR GEOLOCATION -- LEAVING HERE TO FIX
+    //   .get('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCiR8dLY7WEQECSzJW0P60hdvg0ReoN7z8')
+    //   .then(function(res) {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //       let latitude = position.coords.latitude;
+    //       let longitude = position.coords.longitude;
+    //       console.log("You are located at: " + latitude + "," + longitude + ".");
+    //     })
+    //   .catch(error => {
+    //       console.log(error)
+    //   });    
+    //   });
+      
+
+
 if (err) return console.log(err);
       console.log(res); // { filename: './user.pdf' }
       (async () => { //This opens the PDF in a new browser via open npm
