@@ -12,7 +12,7 @@ const geolocator = require('./assets/js/geolocator');
 
 const generateHTML = require("./assets/js/generateHTML"); //Don't need to put .js
 
-const questions = ["What is your GitHub user name?", "What is your favorite color?"];
+const questions = ["What is your GitHub user name?", "What is your favorite color?", "Where are you located (city, state)?"];
 
 inquirer
   .prompt([
@@ -31,6 +31,11 @@ inquirer
       type: "input",
       message: questions[0],
       name: "name"
+    },
+    {
+      type: "input",
+      message: questions[2],
+      name: "questions",
     }
   ])
   .then(answers => {
@@ -41,10 +46,13 @@ inquirer
       } else {
       console.log("You chose " + answers.color + ". I love that color, too!");
       }
-    if (answers.name == '') {
-      console.log("Oh no! You don't have a username? That won't do, let's try this again!");
-    } else {
-    console.log("I love your username, " + answers.name + ", it's so original! Loading GitHub profile now.");
+      if (answers.name == '' || answers.questions == '') {
+        console.log("Oh no! You forgot to write something here! That won't do, let's try this again!");
+      } else {
+      console.log("Onwards!"); 
+    
+      let questions = answers.questions; //Prepping for module export
+       
     pdf.create(generateHTML(answers)).toFile('./user.pdf', function(err, res) {
       
    axios //API CALL FOR GITHUB
@@ -57,10 +65,8 @@ inquirer
         console.log("Public Repositories: " + "<p>" + res.data.public_repos + "</p>"); // # of public repos
         console.log("Followers: " + "<p>" + res.data.followers + "</p>"); // # of followers
         console.log("Following: " + "<p>" + res.data.following + "</p>"); // # following
-        console.log(res.data.location);  //location (NEEDS GOOGLE MAPS API)
         console.log("GitHub Stars: " + "<p>" + res.data.starred_url + "</p>"); // # of GitHub stars
         console.log(res.data.url); //GitHub PROFILE?
-        console.log(geolocator); //Location via Google Maps BUT NOT WORKING RN
       })
       .catch(error => {
         console.log(error)
@@ -72,7 +78,6 @@ if (err) return console.log(err);
         await open('./user.pdf');
       })();
    });
-}
-  });
-});
+  }})})
 
+module.exports = questions;

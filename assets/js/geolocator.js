@@ -1,16 +1,17 @@
 const axios = require("axios");
 
-    axios //CURRENTLY THROWING AN ERROR FOR GEOLOCATION -- LEAVING HERE TO FIX
+const questions = require("./../../index");
 
-      .get('https://maps.googleapis.com/maps/api/geocode/json?latlng= ' + latitude + ',' + longitude + '&key=AIzaSyCiR8dLY7WEQECSzJW0P60hdvg0ReoN7z8')
-      .then(function() {
-          console.log("HI");
-          let latt
-
+    axios //JUST GOT NEW API, STILL THROWING AN ERROR AND SAYING THAT IT IS NOT AUTHORIZED
+      .get('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDTNJlFaj1Sjtp8RuIfFRGvaZXj0xTzPIg')
+      .then(function(res) {
+          console.log(questions);
+      })
  
-//     .catch(error => {
-//      console.log(error)
-//     });    
- });
+.catch(error => {
+   console.log(error)
+ });    
       
+
+
 
