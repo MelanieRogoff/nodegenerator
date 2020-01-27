@@ -72,7 +72,5 @@ if (err) return console.log(err);
       })();
    });
   }})
-  answers = answers.name;
-  module.exports = answers;
+ 
 })
-

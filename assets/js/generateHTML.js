@@ -1,4 +1,4 @@
-const answers = require("./../../index");
+const index = require('./../../index');
 
 const colors = {
   green: {
@@ -27,7 +27,7 @@ const colors = {
   }
 };
 
-  function generateHTML(data) {
+  function generateHTML(index) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -54,8 +54,7 @@ const colors = {
          height: 100%;
          }
          .wrapper {
-           ${console.log("Hi, I'm " + answers)};
-         background-color: ${colors[data.color].wrapperBackground};
+         background-color: ${[answers.color].wrapperBackground};
          padding-top: 100px;
          }
          body {
@@ -97,8 +96,8 @@ const colors = {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[data.color].headerBackground};
-         color: ${colors[data.color].headerColor};
+         background-color: ${[answers.color].headerBackground};
+         color: ${[answers.color].headerColor};
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -109,7 +108,7 @@ const colors = {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[data.color].photoBorderColor};
+         border: 6px solid ${[answers.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -152,8 +151,8 @@ const colors = {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[data.color].headerBackground};
-           color: ${colors[data.color].headerColor};
+           background-color: ${[answers.color].headerBackground};
+           color: ${[answers.color].headerColor};
            margin: 20px;
          }
          
@@ -176,8 +175,74 @@ const colors = {
       </style>
       </head>
       <body>
-      <p>Hi I'm mark</p>
-      </body>
+      <div class="photo-header">
+        <div class="wrapper">
+          <img class="photo-header img" src="${res.data.avatar_url}">
+          <br><br>
+            <h2>Hi!</h2> <!--Off-green background-->
+            <h2>My name is ${answers.name}.</h2>
+            <!--Location Link to Map +  Icon-->
+              <a href="https://www.google.com/maps/place/" + ${res.data.location} + "/>" 
+              <img id="locate" src="assets/images/location.jpeg"></img>
+            </a>
+              <!--GitHub Link To Profile +  Icon-->
+                <a href='https://github.com/' + ${answers.name} + "/>"
+                    <img id="locate" src="assets/images/github.png"></img>
+                </a>
+                <!--Blog Link On Icon-->
+                <a href="${res.data.blog}">
+                  <img id="locate" src="assets/images/blog.png"></img>
+                </a>
+  </div>
+  </div>
+
+    <div class="container"> <!--White background-->
+      <p style="text-align:center;">${res.data.bio}</p>
+      <br>
+      <div class="card">
+        <row>
+        <h6 style="text-align:center;">Public Repositories</h6>
+      </row>
+      <row>
+        <p style="text-align:center;">${res.data.public_repos}</p>
+      </row>
+      </div>
+    
+      <div class="card">
+          <row>
+          <h6 style="text-align:center;">GitHub Stars</h6>
+        </row>
+
+          <row>
+          <p style="text-align:center;">${res.data.starred_url}</p>
+        </row>
+        </div>
+
+        <div class="card" id="moveToRight">
+          <row>
+            <h6 style="text-align:center;">Followers</h6>
+          </row>
+
+            <row>
+          <p style="text-align:center;">${res.data.followers}</p>
+          </row>
+
+          </div>
+
+          <div class="card" id="mover">
+          <row>
+            <h6 style="text-align:center;">Following</h6>
+          </row>
+
+          <row>
+            <p style="text-align:center;">${res.data.following}</p>
+          </row>
+
+          </div>
+    </div>
+
+    <div class="footing"></div>
+  </body>
       </html>`
         }
     
