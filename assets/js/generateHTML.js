@@ -1,4 +1,4 @@
-const index = require('./../../index');
+const answers = require('./../../index');
 
 const colors = {
   green: {
@@ -27,7 +27,7 @@ const colors = {
   }
 };
 
-  function generateHTML(index) {
+  function generateHTML(answers, res) { //put answers first because that's what we accessed first in the index.js
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -54,7 +54,7 @@ const colors = {
          height: 100%;
          }
          .wrapper {
-         background-color: ${[answers.color].wrapperBackground};
+         background-color: ${colors[answers.color].wrapperBackground};
          padding-top: 100px;
          }
          body {
@@ -96,19 +96,19 @@ const colors = {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${[answers.color].headerBackground};
-         color: ${[answers.color].headerColor};
+         background-color: ${colors[answers.color].headerBackground};
+         color: ${colors[answers.color].headerColor};
          padding: 10px;
-         width: 95%;
+         width: 85%;
          border-radius: 6px;
          }
-         .photo-header img {
-         width: 250px;
-         height: 250px;
+         #photoimg {
+         width: 200px;
+         height: 200px;
          border-radius: 50%;
-         object-fit: cover;
-         margin-top: -75px;
-         border: 6px solid ${[answers.color].photoBorderColor};
+         margin-left: 220px;
+         margin-top: 10px;
+         border: 6px solid ${colors[answers.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -151,8 +151,8 @@ const colors = {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${[answers.color].headerBackground};
-           color: ${[answers.color].headerColor};
+           background-color: ${colors[answers.color].headerBackground};
+           color: ${colors[answers.color].headerColor};
            margin: 20px;
          }
          
@@ -166,7 +166,9 @@ const colors = {
          color: inherit;
          font-weight: bold;
          }
-
+         .locate {
+          border: 6px solid ${colors[answers.color].photoBorderColor};
+         }
          @media print { 
           body { 
             zoom: .75; 
@@ -177,28 +179,31 @@ const colors = {
       <body>
       <div class="photo-header">
         <div class="wrapper">
-          <img class="photo-header img" src="${res.data.avatar_url}">
-          <br><br>
+          <img id="photoimg" src="${res.data.avatar_url}">
             <h2>Hi!</h2> <!--Off-green background-->
-            <h2>My name is ${answers.name}.</h2>
+            <h2>My name is ${res.data.name}.</h2>
+
             <!--Location Link to Map +  Icon-->
-              <a href="https://www.google.com/maps/place/" + ${res.data.location} + "/>" 
-              <img id="locate" src="assets/images/location.jpeg"></img>
+
+              <a href="https://www.google.com/maps/place/" + ${res.data.location} + /> 
+              <img class="locate" src="assets/images/location.jpeg"></img>
             </a>
+
               <!--GitHub Link To Profile +  Icon-->
-                <a href='https://github.com/' + ${answers.name} + "/>"
-                    <img id="locate" src="assets/images/github.png"></img>
-                </a>
-                <!--Blog Link On Icon-->
+
+                <a href='https://github.com/users/' + ${answers.name} + />
+                    <img class="locate" src="assets/images/github.png"></img>
+                
+                    <!--Blog Link On Icon-->
+
                 <a href="${res.data.blog}">
-                  <img id="locate" src="assets/images/blog.png"></img>
+                  <img class="locate" src="assets/images/blog.png"></img>
                 </a>
   </div>
   </div>
 
     <div class="container"> <!--White background-->
       <p style="text-align:center;">${res.data.bio}</p>
-      <br>
       <div class="card">
         <row>
         <h6 style="text-align:center;">Public Repositories</h6>
