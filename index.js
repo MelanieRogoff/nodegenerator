@@ -6,7 +6,7 @@ const open = require('open');
 
 const pdf = require('html-pdf');
 
-const generateHTML = require("./assets/js/generateHTML"); //Don't need to put .js
+const generateHTML = require("./assets/js/generateHTML"); 
 
 const questions = ["What is your GitHub user name?", "What is your favorite color?"];
 
@@ -17,7 +17,7 @@ inquirer
       message: questions[1],
       name: "color",
       choices: [
-        "green", //this is referencing generateHTML.js
+        "green", //this references colors from  generateHTML.js
         "blue",
         "pink",
         "red",
@@ -43,16 +43,18 @@ inquirer
    axios //API CALL FOR GITHUB
       .get("https://api.github.com/users/" + answers.name)
       .then(function(res) {
-        pdf.create(generateHTML(answers, res)).toFile('./user.pdf', function(err) {
+        pdf.create(generateHTML(answers, res)).toFile('./user.pdf', function(err) { //passing answers & res in generateHTML because we want to ensure that the generateHTML JS file can access the response from the axios call, and we do this by passing them as parameters here. 
+
         console.log(res.data.blog);   //blog
         console.log("GitHub Stars: " + "<p>" + res.data.starred_url + "</p>"); // # of GitHub stars
-  if (err) return console.log(err);
+  if (err) return console.log(err); 
     console.log(res); // { filename: './user.pdf' }
     (async () => { //This opens PDF in new browser via open npm
       await open('./user.pdf');
   })()
 })
 })
+//Have to put catch LAST because catch ONLY happens if there's an error, and if we put catch beforehand, it could try to open it before the pdf finishes being created
   .catch(error => {
       console.log(error)
   });  
