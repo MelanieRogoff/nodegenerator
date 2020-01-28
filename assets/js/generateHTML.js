@@ -1,6 +1,5 @@
 const answers = require('./../../index');
 
-
 const colors = {
   green: {
     wrapperBackground: "#E6E1C3",
@@ -58,6 +57,10 @@ const colors = {
          background-color: ${colors[answers.color].wrapperBackground};
          padding-top: 100px;
          }
+        .footing {
+          background-color: ${colors[answers.color].wrapperBackground};
+          height: 35px;
+        }
          body {
          background-color: white;
          -webkit-print-color-adjust: exact !important;
@@ -107,8 +110,8 @@ const colors = {
          width: 200px;
          height: 200px;
          border-radius: 50%;
-         margin-left: 220px;
-         margin-top: 10px;
+         margin-left: 230px;
+         margin-top: -70px;
          border: 6px solid ${colors[answers.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
@@ -145,8 +148,8 @@ const colors = {
            display: flex;
            flex-wrap: wrap;
            justify-content: space-between;
-           margin-top: 20px;
-           margin-bottom: 20px;
+           margin-top: 10px;
+           margin-bottom: 10px;
          }
 
          .card {
@@ -166,12 +169,6 @@ const colors = {
          text-decoration: none;
          color: inherit;
          font-weight: bold;
-         }
-
-         .locate {
-          border: 6px solid ${colors[answers.color].photoBorderColor};
-          height: 100px;
-          width: 100px; 
          }
 
          @media print { 
@@ -224,7 +221,7 @@ const colors = {
         </row>
 
           <row>
-          <p style="text-align:center;">${res.data.starred_url}</p>
+          <p style="text-align:center;">${res.data.subscribers_count}</p>
         </row>
         </div>
 

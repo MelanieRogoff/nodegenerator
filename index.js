@@ -44,18 +44,18 @@ inquirer
       .get("https://api.github.com/users/" + answers.name)
       .then(function(res) {
         pdf.create(generateHTML(answers, res)).toFile('./user.pdf', function(err) { //passing answers & res in generateHTML because we want to ensure that the generateHTML JS file can access the response from the axios call, and we do this by passing them as parameters here. 
-          console.log(res.data.location);
 
-  if (err) return console.log(err); 
-    console.log(res); // { filename: './user.pdf' }
-    (async () => { //This opens PDF in new browser via open npm
-      await open('./user.pdf');
-  })()
-})
-})
+          if (err) return console.log(err);
+            console.log(res); // { filename: './user.pdf' }
+          (async () => { //This opens PDF in new browser via open npm
+            await open('./user.pdf');
+          })()
+        })
+        })
 //Have to put catch LAST because catch ONLY happens if there's an error, and if we put catch beforehand, it could try to open it before the pdf finishes being created
-  .catch(error => {
+    .catch(error => {
       console.log(error)
-  });  
-}})
+    })
+  }
+});
  
