@@ -1,5 +1,6 @@
 const answers = require('./../../index');
 
+
 const colors = {
   green: {
     wrapperBackground: "#E6E1C3",
@@ -166,9 +167,13 @@ const colors = {
          color: inherit;
          font-weight: bold;
          }
+
          .locate {
           border: 6px solid ${colors[answers.color].photoBorderColor};
+          height: 100px;
+          width: 100px; 
          }
+
          @media print { 
           body { 
             zoom: .75; 
@@ -185,19 +190,19 @@ const colors = {
 
             <!--Location Link to Map +  Icon-->
 
-              <a href="https://www.google.com/maps/place/" + ${res.data.location} + /> 
-              <img class="locate" src="assets/images/location.jpeg"></img>
+              <a href="https://www.google.com/maps/place/${res.data.location}"> 
+              <img src="assets/images/location.jpeg">
             </a>
 
               <!--GitHub Link To Profile +  Icon-->
 
-                <a href='https://github.com/users/' + ${answers.name} + />
-                    <img class="locate" src="assets/images/github.png"></img>
+                <a href='https://github.com/${answers.name}'>
+                    <img src="assets/images/github.png">
                 
-                    <!--Blog Link On Icon-->
+              <!--Blog Link On Icon-->
 
                 <a href="${res.data.blog}">
-                  <img class="locate" src="assets/images/blog.png"></img>
+                  <img src="assets/images/blog.png">
                 </a>
   </div>
   </div>
