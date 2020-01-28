@@ -59,7 +59,7 @@ const colors = {
          }
         .footing {
           background-color: ${colors[answers.color].wrapperBackground};
-          height: 35px;
+          height: 25px;
         }
          body {
          background-color: white;
@@ -79,7 +79,7 @@ const colors = {
          font-size: 3em;
          }
          h2 {
-         font-size: 2.5em;
+         font-size: 1.8em;
          }
          h3 {
          font-size: 2em;
@@ -107,8 +107,8 @@ const colors = {
          border-radius: 6px;
          }
          #photoimg {
-         width: 200px;
-         height: 200px;
+         width: 180px;
+         height: 180px;
          border-radius: 50%;
          margin-left: 230px;
          margin-top: -70px;
@@ -152,6 +152,24 @@ const colors = {
            margin-bottom: 10px;
          }
 
+         #locateimg {
+           height: 40px;
+           width: 40px;
+           margin-left: 210px;
+         }
+
+         #githubimg {
+          height: 40px;
+          width: 40px;
+          margin-left: 50px;
+        }
+
+        #blogimg {
+          height: 40px;
+          width: 40px;
+          margin-left: 48px;
+        }
+
          .card {
            padding: 20px;
            border-radius: 6px;
@@ -188,18 +206,20 @@ const colors = {
             <!--Location Link to Map +  Icon-->
 
               <a href="https://www.google.com/maps/place/${res.data.location}"> 
-              <img src="assets/images/location.jpeg">
+              <img id="locateimg" src="file:///Users/melanierogoff/Desktop/nodegeneratorHW/assets/images/location.jpeg">
+
             </a>
 
               <!--GitHub Link To Profile +  Icon-->
 
                 <a href='https://github.com/${answers.name}'>
-                    <img src="assets/images/github.png">
+                <img id="githubimg" src="file:///Users/melanierogoff/Desktop/nodegeneratorHW/assets/images/github.png">
+
                 
               <!--Blog Link On Icon-->
 
                 <a href="${res.data.blog}">
-                  <img src="assets/images/blog.png">
+                  <img id="blogimg" src="file:///Users/melanierogoff/Desktop/nodegeneratorHW/assets/images/blog.png">
                 </a>
   </div>
   </div>
