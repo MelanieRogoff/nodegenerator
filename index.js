@@ -40,37 +40,35 @@ inquirer
       } else {
       console.log("Onwards!");
 
-      axios
-      .get(`https://api.github.com/users/${answers.name}/starred`)
-      .then(function(res) {
-        let stars = res.data[0].stargazers_count;
-      })
+  axios
+    .get(`https://api.github.com/users/${answers.name}/starred`)
+    .then(function(res) {
+      let stars = res.data[0].stargazers_count;
 
-   axios //API CALL FOR GITHUB
-      .get("https://api.github.com/users/" + answers.name)
-      .then(function(res) {
-        const help = res.data.location;
-          help.split(', ').join("");
-        const helper = help.split(",").map(function(item) {
-            return item.trim();
-        });
-          helper.join;  
+  axios //API CALL FOR GITHUB
+    .get("https://api.github.com/users/" + answers.name)
+    .then(function(res) {
+      const help = res.data.location;
+      help.split(', ').join("");
+      const helper = help.split(",").map(function(item) {
+        return item.trim();
+      });
+      helper.join;  
           
-        pdf.create(generateHTML(answers, res, helper, stars)).toFile('./user.pdf', function(err) { //passing answers & res in generateHTML because we want to ensure that the generateHTML JS file can access the response from the axios call, and we do this by passing them as parameters here. 
-         //The above gets the error that stars is undefined, unsure why
-          if (err) return console.log(err);
-            //console.log(res); // { filename: './user.pdf' }
-          (async () => { //This opens PDF in new browser via open npm
-            await open('./user.pdf');
-          })()
-        })
-        })
+  pdf.create(generateHTML(answers, res, helper, stars)).toFile('./user.pdf', function(err) { //passing answers & res in generateHTML because we want to ensure that the generateHTML JS file can access the response from the axios call, and we do this by passing them as parameters here. 
+ //The above gets the error that stars is undefined, unsure why
+    if (err) return console.log(err);
+  //console.log(res); // { filename: './user.pdf' }
+    (async () => { //This opens PDF in new browser via open npm
+      await open('./user.pdf');
+    })()
+   })
+})
         
 //Have to put catch LAST because catch ONLY happens if there's an error, and if we put catch beforehand, it could try to open it before the pdf finishes being created
-    .catch(error => {
-      console.log(error)
-    })
-
+  .catch(error => {
+    console.log(error)
+  })
   }
-})
+    )}})
  
