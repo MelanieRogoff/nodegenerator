@@ -27,7 +27,7 @@ const colors = {
   }
 };
 
-  function generateHTML(answers, res) { //put answers first because that's what we accessed first in the index.js
+  function generateHTML(answers, res, helper, stars) { //put answers first because that's what we accessed first in the index.js
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -205,7 +205,8 @@ const colors = {
 
             <!--Location Link to Map +  Icon-->
 
-              <a href="https://www.google.com/maps/place/${res.data.location}"> 
+              <a href="https://www.google.com/maps/place/${helper}"> 
+              
               <img id="locateimg" src="file:///Users/melanierogoff/Desktop/nodegeneratorHW/assets/images/location.jpeg">
 
             </a>
@@ -241,7 +242,7 @@ const colors = {
         </row>
 
           <row>
-          <p style="text-align:center;">${res.data.subscribers_count}</p>
+          <p style="text-align:center;">${stars}</p>
         </row>
         </div>
 
