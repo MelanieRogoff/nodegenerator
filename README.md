@@ -11,7 +11,6 @@ Steps are outlined in the following GIF as well, which demonstrates full functio
 
 ![GIF](https://media.giphy.com/media/Ur8bUaE7kj32PjBdfl/giphy.gif)
 
-Sample PDF Portfolio: 
+Sample PDF Portfolio Screenshot: 
 
 ![Sample Portfolio](assets/screenshots_and_gif/pdfsample.png)
-![Sample Portfolio](assets/screenshots_and_gif/melpdf.pdf)
